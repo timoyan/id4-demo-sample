@@ -7,3 +7,6 @@
 
 src/id4-server/obj
 src/id4-server/bin
+
+src/id4-server/tempkey.rsa
+src/id4-server/identityserver4_log.txt
