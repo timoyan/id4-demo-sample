@@ -1,0 +1,9 @@
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+src/id4-server/obj
+src/id4-server/bin

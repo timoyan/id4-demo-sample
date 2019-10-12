@@ -5,4 +5,8 @@
     <RootNamespace>id4_server</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="IdentityServer4" Version="3.0.1" />
+  </ItemGroup>
+
 </Project>
