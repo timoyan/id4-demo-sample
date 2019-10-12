@@ -1,4 +1,4 @@
-# id4-server sample
+# id4-demo-sample
 
 ## Prerequisite
 
