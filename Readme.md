@@ -2,7 +2,8 @@
 
 ## Prerequisite
 
-.Net Core SDK (version please refer to globa.json in root)
+- .Net Core SDK (version please refer to globa.json in root, install please refer to https://dotnet.microsoft.com/download)
+- .Net EF Cli (Install via `dotnet tool install -g dotnet-ef`)
 
 ## Create solution and project
 
@@ -19,8 +20,6 @@
 `dotnet add src/id4-server/id4-server.csproj package Serilog.Sinks.File -v 4.0.0`
 
 ## Container SQL Server settings
-
-https://docs.microsoft.com/zh-tw/sql/relational-databases/security/password-policy?view=sql-server-2017
 
 - Get docker image SQL server
 ```
@@ -44,4 +43,8 @@ docker exec -it sql1 "bash"
 /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P "<YourStrong@Passw0rd>"
 ```
 
-
+- Generated DB Script
+```
+dotnet ef migrations add InitialIdentityServerPersistedGrantDbMigration -c PersistedGrantDbContext -o Data/Migrations/IdentityServer/PersistedGrantDb
+dotnet ef migrations add InitialIdentityServerConfigurationDbMigration -c ConfigurationDbContext -o Data/Migrations/IdentityServer/ConfigurationDb
+```
