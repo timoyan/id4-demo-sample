@@ -69,3 +69,8 @@ Access <https://localhost:5004/WeatherForecast> to validate service status.
 
 `dotnet new console -n console-client -o ./src/console-client -lang C# --type project`\
 `dotnet sln id4-demo-sample.sln add ./src/console-client/console-client.csproj`
+
+## Create resource owner project
+
+`dotnet new console -n console-resource-owner -o ./src/console-resource-owner -lang C# --type project`\
+`dotnet sln id4-demo-sample.sln add ./src/console-resource-owner/console-resource-owner.csproj`

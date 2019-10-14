@@ -1,8 +1,10 @@
 using System;
 using System.Linq;
 using System.Reflection;
+using IdentityServer4.AspNetIdentity;
 using IdentityServer4.EntityFramework.DbContexts;
 using IdentityServer4.EntityFramework.Mappers;
+using IdentityServer4.Test;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -48,7 +50,10 @@ namespace id4_server
 
                     // this enables automatic token cleanup. this is optional.
                     options.EnableTokenCleanup = true;
-                });
+                })
+                .AddTestUsers(Config.GetUsers());
+                // .AddProfileService<IdentityServer4.AspNetIdentity.ProfileService<TestUser>>()
+                // .AddResourceOwnerValidator<ResourceOwnerPasswordValidator<TestUser>>();
 
             if (IsDevelopment)
             {
