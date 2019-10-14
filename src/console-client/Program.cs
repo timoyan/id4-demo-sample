@@ -10,7 +10,7 @@ namespace console_client {
             // discover endpoints from metadata
             var client = new HttpClient ();
 
-            var disco = await client.GetDiscoveryDocumentAsync ("http://localhost:5000");
+            var disco = await client.GetDiscoveryDocumentAsync ("http://127.0.0.1:5000");
             if (disco.IsError) {
                 Console.WriteLine (disco.Error);
                 return;
