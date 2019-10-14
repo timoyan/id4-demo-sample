@@ -58,9 +58,14 @@ dotnet ef migrations add InitialIdentityServerPersistedGrantDbMigration -c Persi
 dotnet ef migrations add InitialIdentityServerConfigurationDbMigration -c ConfigurationDbContext -o Data/Migrations/IdentityServer/ConfigurationDb
 ```
 
-## Create api projects
+## Create api project
 
 `dotnet new webapi -n api -o ./src/api -lang C# --type project`\
 `dotnet sln id4-demo-sample.sln add ./src/api/api.csproj`
 
 Access <https://localhost:5004/WeatherForecast> to validate service status.
+
+## Create client project
+
+`dotnet new console -n console-client -o ./src/console-client -lang C# --type project`\
+`dotnet sln id4-demo-sample.sln add ./src/console-client/console-client.csproj`
