@@ -43,6 +43,9 @@ docker exec -it sql1 "bash"
 /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P "<YourStrong@Passw0rd>"
 ```
 
+- Azure Data Studio for mac
+https://docs.microsoft.com/en-us/sql/azure-data-studio/download?view=sql-server-ver15
+
 - Generated DB Script
 ```
 dotnet ef migrations add InitialIdentityServerPersistedGrantDbMigration -c PersistedGrantDbContext -o Data/Migrations/IdentityServer/PersistedGrantDb
