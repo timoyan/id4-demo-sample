@@ -75,9 +75,13 @@ Access <https://localhost:5004/WeatherForecast> to validate service status.
 `dotnet new console -n console-resource-owner -o ./src/console-resource-owner -lang C# --type project`\
 `dotnet sln id4-demo-sample.sln add ./src/console-resource-owner/console-resource-owner.csproj`
 
-[id4_demo].[dbo].[Clients]
-1002	client_credentials	2	
+## Update EF
+```
+dotnet ef migrations add identity -c ApplicationDbContext -o Data/Migrations/IdentityServer/IdentityDb
+dotnet ef migrations add InitialIdentityServerPersistedGrantDbMigration -c PersistedGrantDbContext -o Data/Migrations/IdentityServer/PersistedGrantDb
+dotnet ef migrations add InitialIdentityServerConfigurationDbMigration -c ConfigurationDbContext -o Data/Migrations/IdentityServer/ConfigurationDb
 
-[id4_demo].[dbo].[ClientScopes]
-1002	openid	2	
-1003	profile	2	
+dotnet ef database update identity -c ApplicationDbContext
+dotnet ef database update InitialIdentityServerPersistedGrantDbMigration -c PersistedGrantDbContext
+dotnet ef database update InitialIdentityServerConfigurationDbMigration -c ConfigurationDbContext
+```

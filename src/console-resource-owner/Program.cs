@@ -16,7 +16,7 @@ namespace console_resource_owner
             var renewResponse = await RefreshTokenAsync(response.RefreshToken); 
             Console.WriteLine(renewResponse.Json);
 
-            await GetClaimsAsync(response.AccessToken);
+            // await GetClaimsAsync(response.AccessToken);
             // 
 
             // var response2  = await RequestTokenWithClientCredentialAsync();
