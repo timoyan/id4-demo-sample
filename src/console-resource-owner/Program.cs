@@ -12,14 +12,17 @@ namespace console_resource_owner
 
         private static async Task Main()
         {
-            var response = await RequestTokenAsync();
-            Console.WriteLine(response.Json);
+            // var response = await RequestTokenWithPasswordAsync();
+            // Console.WriteLine(response.Json);
 
-            await GetClaimsAsync(response.AccessToken);
-            await RefreshTokenAsync(response.RefreshToken);
+            // await GetClaimsAsync(response.AccessToken);
+            // await RefreshTokenAsync(response.RefreshToken);
+
+            var response2  = await RequestTokenWithClientCredentialAsync();
+            Console.WriteLine(response2.Json);
         }
 
-        static async Task<TokenResponse> RequestTokenAsync()
+        static async Task<TokenResponse> RequestTokenWithPasswordAsync()
         {
             var disco = await _cache.GetAsync();
             if (disco.IsError) throw new Exception(disco.Error);
@@ -32,6 +35,23 @@ namespace console_resource_owner
                 UserName = "alice",
                 Password = "password",
                 Scope = "api1 offline_access openid profile",
+            });
+
+            if (response.IsError) throw new Exception(response.Error);
+            return response;
+        }
+
+        static async Task<TokenResponse> RequestTokenWithClientCredentialAsync()
+        {
+            var disco = await _cache.GetAsync();
+            if (disco.IsError) throw new Exception(disco.Error);
+
+            var response = await _tokenClient.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest
+            {
+                Address = disco.TokenEndpoint,
+                ClientId = "ro.client",
+                ClientSecret = "secret",
+                Scope = "api1",
             });
 
             if (response.IsError) throw new Exception(response.Error);
