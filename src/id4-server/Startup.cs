@@ -64,7 +64,8 @@ namespace id4_server
                         // this enables automatic token cleanup. this is optional.
                         options.EnableTokenCleanup = true;
                     })
-                    .AddAspNetIdentity<ApplicationUser>();
+                    .AddAspNetIdentity<ApplicationUser>()
+                    .AddProfileService<CustomProfileService<ApplicationUser>>();
 
 
             // .AddResourceOwnerValidator<CustomUserValidator>();

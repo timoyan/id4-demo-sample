@@ -14,31 +14,31 @@ using Microsoft.Extensions.Logging;
 
 namespace id4_server
 {
-    public class ProfileService<TUser> : IProfileService
-        where TUser : class
+    public class CustomProfileService<ApplicationUser> : IProfileService
+        where ApplicationUser : class
     {
         /// <summary>
         /// The claims factory.
         /// </summary>
-        protected readonly IUserClaimsPrincipalFactory<TUser> ClaimsFactory;
+        protected readonly IUserClaimsPrincipalFactory<ApplicationUser> ClaimsFactory;
         
         /// <summary>
         /// The logger
         /// </summary>
-        protected readonly ILogger<ProfileService<TUser>> Logger;
+        protected readonly ILogger<CustomProfileService<ApplicationUser>> Logger;
 
         /// <summary>
         /// The user manager.
         /// </summary>
-        protected readonly UserManager<TUser> UserManager;
+        protected readonly UserManager<ApplicationUser> UserManager;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ProfileService{TUser}"/> class.
         /// </summary>
         /// <param name="userManager">The user manager.</param>
         /// <param name="claimsFactory">The claims factory.</param>
-        public ProfileService(UserManager<TUser> userManager,
-            IUserClaimsPrincipalFactory<TUser> claimsFactory)
+        public CustomProfileService(UserManager<ApplicationUser> userManager,
+            IUserClaimsPrincipalFactory<ApplicationUser> claimsFactory)
         {
             UserManager = userManager;
             ClaimsFactory = claimsFactory;
@@ -50,9 +50,9 @@ namespace id4_server
         /// <param name="userManager">The user manager.</param>
         /// <param name="claimsFactory">The claims factory.</param>
         /// <param name="logger">The logger.</param>
-        public ProfileService(UserManager<TUser> userManager,
-            IUserClaimsPrincipalFactory<TUser> claimsFactory,
-            ILogger<ProfileService<TUser>> logger)
+        public CustomProfileService(UserManager<ApplicationUser> userManager,
+            IUserClaimsPrincipalFactory<ApplicationUser> claimsFactory,
+            ILogger<CustomProfileService<ApplicationUser>> logger)
         {
             UserManager = userManager;
             ClaimsFactory = claimsFactory;
