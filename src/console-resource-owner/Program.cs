@@ -12,14 +12,15 @@ namespace console_resource_owner
 
         private static async Task Main()
         {
-            // var response = await RequestTokenWithPasswordAsync();
-            // Console.WriteLine(response.Json);
+            var response = await RequestTokenWithPasswordAsync();
+            var renewResponse = await RefreshTokenAsync(response.RefreshToken); 
+            Console.WriteLine(renewResponse.Json);
 
-            // await GetClaimsAsync(response.AccessToken);
-            // await RefreshTokenAsync(response.RefreshToken);
+            await GetClaimsAsync(response.AccessToken);
+            // 
 
-            var response2  = await RequestTokenWithClientCredentialAsync();
-            Console.WriteLine(response2.Json);
+            // var response2  = await RequestTokenWithClientCredentialAsync();
+            // Console.WriteLine(response2.Json);
         }
 
         static async Task<TokenResponse> RequestTokenWithPasswordAsync()
@@ -74,7 +75,7 @@ namespace console_resource_owner
             Console.WriteLine(response.Json);
         }
 
-         static async Task RefreshTokenAsync(string refreshToken)
+         static async Task<TokenResponse> RefreshTokenAsync(string refreshToken)
         {
             Console.WriteLine("Using refresh token: {0}", refreshToken);
 
@@ -89,7 +90,7 @@ namespace console_resource_owner
             });
 
             if (response.IsError) throw new Exception(response.Error);
-             Console.WriteLine(response.Json);
+            return response;
         }
     }
 }

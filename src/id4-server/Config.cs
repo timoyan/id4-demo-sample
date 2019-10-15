@@ -25,7 +25,8 @@ namespace id4_server
                     Claims = new []
                     {
                         new Claim("name", "Alice"),
-                        new Claim("website", "https://alice.com")
+                        new Claim("website", "https://alice.com"),
+                        new Claim("preferred_username", "AA")
                     }
                 },
                 new TestUser
